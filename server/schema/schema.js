@@ -142,7 +142,7 @@ const RootMutation = new GraphQLObjectType({
 			type: ClientType,
 			args: {
 				id: {
-					type: GraphQLNonNull(GraphQLString)
+					type: GraphQLNonNull(GraphQLID)
 				}
 			},
 			resolve(parent, args) {

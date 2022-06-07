@@ -1,8 +1,8 @@
 import React from 'react';
 import {useQuery} from '@apollo/client';
 import {ClientRow} from "./ClientRow";
-import {GET_CLIENTS} from "../queries/clientQuery";
 import {SpinnerComponent} from "./Spinner";
+import {GET_CLIENTS} from "../graphql-conn/queries/clientQuery";
 
 
 export const ClientComponent = () => {
