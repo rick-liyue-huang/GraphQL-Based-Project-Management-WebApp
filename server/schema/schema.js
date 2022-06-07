@@ -229,7 +229,7 @@ const RootMutation = new GraphQLObjectType({
 								description: args.description,
 								status: args.status
 							}
-					}, 
+					},
 					{new: true}
 				)
 			}
