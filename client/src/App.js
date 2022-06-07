@@ -1,7 +1,9 @@
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {HeaderComponent} from "./components/Header";
 import {ApolloProvider, ApolloClient, InMemoryCache} from "@apollo/client";
-import {ClientComponent} from "./components/Client";
-import {CreateClientModal} from "./components/AddClientModal";
+import {HomePage} from "./pages/Home";
+import {NotFoundPage} from "./pages/NotFoundPage";
+import {ProjectPage} from "./pages/Project";
 
 // solve the warnings of delete the client
 const cache = new InMemoryCache({
@@ -34,11 +36,17 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <HeaderComponent />
-        <div className="container">
-          <CreateClientModal />
-          <ClientComponent />
-        </div>
+        <Router>
+          <HeaderComponent />
+          <div className="container">
+            <Routes>
+              <Route path={'/'} element={<HomePage />} />
+              <Route path={'/projects/:id'} element={<ProjectPage />} />
+              <Route path={'*'} element={<NotFoundPage />} />
+
+            </Routes>
+          </div>
+        </Router>
       </ApolloProvider>
     </>
 
