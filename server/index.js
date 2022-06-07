@@ -19,6 +19,7 @@ connectDB();
 // solve the problems of being blocked by CORS policy
 app.use(cors());
 
+/*
 __dirname = path.resolve();
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '/client/build')));
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 		res.send('api is running...')
 	})
 }
+*/
 
 app.use(`/graphql`, graphqlHTTP({
 	schema: schema,
