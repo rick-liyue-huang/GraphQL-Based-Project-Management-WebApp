@@ -1,6 +1,6 @@
 // define the server here.
 
-
+const path = require('path');
 require('dotenv').config();
 const cors = require('cors');
 const colors = require('colors');
@@ -18,6 +18,18 @@ const app = express();
 connectDB();
 // solve the problems of being blocked by CORS policy
 app.use(cors());
+
+__dirname = path.resolve();
+if (process.env.NODE_ENV === 'prod') {
+	app.use(express.static(path.join(__dirname, '/client/build')));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+	})
+} else {
+	app.get('/', (req, res) => {
+		res.send('api is running...')
+	})
+}
 
 app.use(`/graphql`, graphqlHTTP({
 	schema: schema,
