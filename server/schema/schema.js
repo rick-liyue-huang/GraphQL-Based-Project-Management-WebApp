@@ -52,6 +52,7 @@ const ProjectType = new GraphQLObjectType({
 	})
 });
 
+// define the query including client clients project and projects
 const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
 	fields: {
